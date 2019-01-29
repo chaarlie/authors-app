@@ -1,6 +1,15 @@
 .example-container {
-    width: 400px;
+    width: 100%;
     height: 200px;
     margin: 10px;
     border: 1px solid #555;
   }
+
+  .list-item:hover {
+     background-color: yellow;
+  }
+  .list-item:active {
+    background-color: yellow;
+    opacity: 0.5;
+ }
+ 

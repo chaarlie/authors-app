@@ -4,7 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 @Component({
   selector: 'app-create-author',
   templateUrl: './create-author.component.html',
-  styleUrls: ['./create-author.component.sass']
+  styleUrls: ['./create-author.component.css']
 })
 export class CreateAuthorComponent implements OnInit {
 

@@ -9,6 +9,7 @@ export class AuthorService implements OnInit{
 
   private authors: Author[] = [
     { 
+      id: "70bgb9a0-2279-11e9-906f-e348aa60aded",
       name: 'Gabriel Garcia Marquez',
       email: 'gabo@marquez.com', 
       publications: [
@@ -25,6 +26,7 @@ export class AuthorService implements OnInit{
         }
       ]
     }, {
+      id: "70bdb9a0-2279-11e9-906f-e948aa60aded",
       name: 'Oscar Wild',
       email: 'Oscar.wild@domain1900.com',
       publications: [
@@ -49,5 +51,9 @@ export class AuthorService implements OnInit{
   getAll(): Observable<Author[]> {
     return of(this.authors);
   }
-  
+
+  update(author: Author) {
+    this.authors.map(a => a.id == author.id?  author:  a);
+    console.log(this.authors);
+  } 
 }
