@@ -31,6 +31,20 @@ functions:
           path: authors
           method: get
           cors: true
+  update:
+    handler: authors/update.update
+    events:
+      - http:
+          path: authors
+          method: put
+          cors: true
+  delete:
+    handler: authors/delete.delete
+    events:
+      - http:
+          path: authors
+          method: delete
+          cors: true
 
 resources:
   Resources:

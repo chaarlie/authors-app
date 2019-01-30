@@ -19,26 +19,26 @@ export class EditableInputDirective {
   }
 
   @HostListener('blur') onBlur() {
-    if( this.publicationOb && this.publicationOb.hasOwnProperty(this.attributeName) ) {
-      this.authorService.getAll().subscribe((authors) => {
-      let modifiedAuthor = authors.filter((a) => a.id == this.author.id );
-      let { publications } = modifiedAuthor[0];
-        
-      for(let k in publications) {
-        if(
-          publications[k].title == this.publicationOb.title ||
-          publications[k].date == this.publicationOb.date ||
-          publications[k].body == this.publicationOb.body 
-          ) {
-            
-            publications[k][this.attributeName] = this.ref.nativeElement.innerText;
-  
-            break;
-        }
-      }
 
-      modifiedAuthor[0].publications = publications;
-      this.authorService.update(modifiedAuthor[0]);
+    if( this.publicationOb && this.publicationOb.hasOwnProperty(this.attributeName) ) {
+
+      this.authorService.getAll().subscribe((authors) => {
+        let modifiedAuthor = authors.filter((a) => a.id == this.author.id );
+        let { publications } = modifiedAuthor[0];
+          
+        for(let k in publications) {
+          if(
+            publications[k].title == this.publicationOb.title ||
+            publications[k].date == this.publicationOb.date ||
+            publications[k].body == this.publicationOb.body 
+            ) {
+              publications[k][this.attributeName] = this.ref.nativeElement.innerText;
+              break;
+          }
+        }
+
+        modifiedAuthor[0].publications = publications;
+        this.authorService.update(modifiedAuthor[0]);
       });
     }
 

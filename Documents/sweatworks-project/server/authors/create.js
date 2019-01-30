@@ -4,10 +4,6 @@ const AWS = require('aws-sdk');
 const uuid = require('uuid');
 
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
-const response =  {
-    statusCode: 0,
-    body: ''
-};
 
 module.exports.create = async (event, context ) => {
     const author = JSON.parse(event.body);
@@ -34,26 +30,7 @@ module.exports.create = async (event, context ) => {
         }
     };
 
-    // return await s3.getObject(params).promise()
-    // .then((res) => {
-    //     return res.Body.toString('utf-8');
-    // })
-    // .catch((err) => {
-    //     return err;
-    // });
-
     return await dynamoDb.put(params).promise()
     .then((res) =>  res )
     .catch((err) =>   err);
-    
-    // let result;
-    // try {
-    //       result = await dynamoDb.put(params);
-     
-    // } catch(error) {
-    //     console.log(error)
-    //       result = error.message;
-    // }
-
-    // return result;
 };

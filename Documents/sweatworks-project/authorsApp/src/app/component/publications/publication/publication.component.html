@@ -1,3 +1,31 @@
-<p>
-  publication works!
-</p>
+     
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef> date </th>
+          <td mat-cell 
+           appEditableInput
+           [author]="selectedAuthor" 
+           [publicationOb]="element"
+           attributeName="date"
+           *matCellDef="let element"> {{element.date}}  </td>
+        </ng-container>
+      
+   
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef> Title </th>
+          <td mat-cell 
+            appEditableInput
+            [author]="selectedAuthor" 
+            [publicationOb]="element"
+            attributeName="title"
+            *matCellDef="let element"> {{element.title}}  </td>
+        </ng-container>
+       
+        <ng-container matColumnDef="body">
+          <th mat-header-cell *matHeaderCellDef> Body </th>
+          <td mat-cell 
+            appEditableInput 
+            [author]="selectedAuthor" 
+            [publicationOb]="element" 
+            attributeName="date" 
+            *matCellDef="let element"> {{element.body}} </td>
+        </ng-container>

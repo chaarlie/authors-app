@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Author } from '../model/Author';
+import { AuthorService } from '../author.service';
 
 @Component({
   selector: 'app-create-author',
@@ -8,18 +10,32 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class CreateAuthorComponent implements OnInit {
 
-  isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
+  thirdFormGroup: FormGroup;
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private _formBuilder: FormBuilder, private authorService: AuthorService) {}
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
+      nameCtrl: ['', Validators.required]
     });
+
     this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
+      emailCtrl: ['', Validators.email]
     });
+
+    this.thirdFormGroup = this._formBuilder.group({
+      birthDateCtrl: ['', Validators.required]
+    });
+  }
+
+  createAuthor() {
+    let authorName = this.firstFormGroup.get('nameCtrl').value;
+    let authorEmail = this.firstFormGroup.get('emailCtrl').value;
+    let authorBIrthDate = this.firstFormGroup.get('birthDateCtrl').value;
+
+    let newAuthor = new Author(authorName, authorEmail, authorBIrthDate, []);
+    this.authorService.create(newAuthor);
   }
 }
