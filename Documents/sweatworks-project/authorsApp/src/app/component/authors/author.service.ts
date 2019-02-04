@@ -34,16 +34,20 @@ export class AuthorService implements OnInit {
     // return this.http.get<Author[]>(this.API_GET, httpOptions)
   }
 
-  create(author: Author): Observable<any> {
+  create(author: Author): any {
+    let result = '';
 
     const httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+      headers: new HttpHeaders({ 
+        'Content-Type': 'application/json',
+       })
     };
     
-    return this.http.post(this.API_POST, author, this.httpOptions).pipe(
-      tap(_ => console.log(`updated author id=${author.id}`)),
-      catchError(this.handleError<any>('create author'))
-    );
+     this.http.post(this.API_POST, JSON.stringify(author), httpOptions).subscribe((data) => {
+       console.log(data);
+    })
+
+    return result;
   }
 
   update(author: Author) {

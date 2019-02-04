@@ -32,8 +32,8 @@ export class CreateAuthorComponent implements OnInit {
 
   createAuthor() {
     let authorName = this.firstFormGroup.get('nameCtrl').value;
-    let authorEmail = this.firstFormGroup.get('emailCtrl').value;
-    let authorBIrthDate = this.firstFormGroup.get('birthDateCtrl').value;
+    let authorEmail = this.secondFormGroup.get('emailCtrl').value;
+    let authorBIrthDate = this.thirdFormGroup.get('birthDateCtrl').value;
 
     let newAuthor = new Author(authorName, authorEmail, authorBIrthDate, []);
     this.authorService.create(newAuthor);
